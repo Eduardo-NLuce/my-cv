@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce | Computational Architectural Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --text-color: #1a2229;
+            --accent-color: #2c3e50;
+            --border-color: #e5e5e5;
+            --mono-font: 'JetBrains+Mono', monospace;
+            --sans-font: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--sans-font);
+            line-height: 1.6;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- ARCHITECTURAL HEADER --- */
+        header {
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: end;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.95rem;
+            font-family: var(--mono-font);
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border 0.2s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        /* --- LAYOUT GRID --- */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 2.5fr;
+            gap: 4rem;
+        }
+
+        /* --- LEFT SIDEBAR (Skills & Education) --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: #777;
+            border-left: 3px solid var(--text-color);
+            padding-left: 10px;
+        }
+
+        .skills-section p {
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .skills-section strong {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .edu-inst {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .edu-date {
+            font-family: var(--mono-font);
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.2rem;
+        }
+
+        /* --- MAIN CONTENT (Summary & Experience) --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        .summary p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .exp-item {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        .exp-item:last-child {
+            border: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .exp-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .exp-title span {
+            font-weight: 400;
+            font-style: italic;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .exp-date {
+            font-family: var(--mono-font);
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 700;
+        }
+
+        .exp-item ul {
+            list-style-type: none;
+        }
+
+        .exp-item li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Minimal architectural bullet point (horizontal dash) */
+        .exp-item li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-color);
+        }
+
+        .bold-project {
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* --- COMPLETELY INTERACTIVE TERMINAL WINDOW (Computational Feature) --- */
+        .terminal-container {
+            margin-top: 4rem;
+            background-color: #151c23;
+            border-radius: 6px;
+            font-family: var(--mono-font);
+            color: #a9b7c6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #1e2a35;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #2b3945;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 6px;
+            margin-right: 1.5rem;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .terminal-title {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            height: 250px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+        }
+
+        .terminal-output {
+            color: #58afec;
+        }
+
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .prompt {
+            color: #27c93f;
+            font-weight: bold;
+        }
+
+        .terminal-input {
+            background: none;
+            border: none;
+            color: #fff;
+            font-family: var(--mono-font);
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            body { padding: 2rem 1rem; }
+            .header-grid { grid-template-columns: 1fr; text-align: left; gap: 1rem; }
+            .contact-info { text-align: left; }
+            h1 { font-size: 2.5rem; }
+            .cv-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .exp-header { flex-direction: column; gap: 0.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="header-grid">
+                <div>
+                    <h1>Eduardo Luce</h1>
+                    <div class="subtitle">M.Arch Architectural Design &bull; Parametric & Computational Lead</div>
+                </div>
+                <div class="contact-info">
+                    <p>London, UK</p>
+                    <p>07763667830</p>
+                    <p><a href="mailto:arq.enluce@gmail.com">arq.enluce@gmail.com</a></p>
+                </div>
+            </div>
+        </header>
+
+        <div class="cv-grid">
+            
+            <div class="sidebar">
+                
+                <div class="skills-section">
+                    <h3>Technical Stack</h3>
+                    <p><strong>BIM & Drafting</strong>Revit, AutoCAD</p>
+                    <p><strong>Parametric & Scripting</strong>Rhino, Grasshopper, Python, C#, ROS, Generative Pipelines</p>
+                    <p><strong>Visualisation & Real-time</strong>V-Ray, Twinmotion, Blender, Unity</p>
+                    <p><strong>Design Suite</strong>Adobe Creative Suite (Photoshop, InDesign)</p>
+                </div>
+
+                <div>
+                    <h3>Education</h3>
+                    <div class="edu-item">
+                        <div class="edu-degree">M.Arch Architectural Design</div>
+                        <div class="edu-inst">UCL Bartlett School of Architecture</div>
+                        <div class="edu-date">London | 2022</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Lightweight Structures Specialist</div>
+                        <div class="edu-inst">UNAM</div>
+                        <div class="edu-date">Mexico | 2018</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Master 1 Architecture</div>
+                        <div class="edu-inst">ENSAP Bordeaux</div>
+                        <div class="edu-date">France | 2014</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Bachelor of Architecture</div>
+                        <div class="edu-inst">UNAM</div>
+                        <div class="edu-date">Mexico | 2015</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Languages</h3>
+                    <p style="font-size: 0.95rem;">
+                        <strong>Spanish</strong> (Native)<br>
+                        <strong>English</strong> (Fluent)<br>
+                        <strong>French</strong> (Working)<br>
+                        <strong>Italian</strong> (Conversational)
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="main-content">
+                
+                <div class="summary">
+                    <p>
+                        Architectural Designer with good experience spanning London, Mexico, and France. Demonstrates a strong design voice that seamlessly integrates parametric methodologies, sustainable strategies, and digital fabrication. Proven track record contributing to high-rise and ultra-high-rise developments, large-scale airport infrastructure, and complex timber/lightweight structures. Adept at driving landmark projects from initial concept through to final delivery within collaborative, world-class design environments.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Professional Experience</h3>
+                    <div class="experience-timeline">
+                        
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="exp-title">Foster + Partners &bull; <span>Architect (Overseas Qualified)</span></div>
+                                <div class="exp-date">2024 — Present</div>
+                            </div>
+                            <ul>
+                                <li>Contributed to the design development and technical documentation of <span class="bold-project">Project Rise</span>, a landmark ultra-high-rise building.</li>
+                                <li>Key team member for the <span class="bold-project">Iconic Terminal at KSIA Riyadh Airport</span>, driving forward advanced design documentation on major international airport infrastructure.</li>
+                                <li>Collaborated closely across multidisciplinary teams, including complex structural engineering, aviation planning, and interior design departments.</li>
+                                <li>Maintained rigorous design quality, envelope performance, and geometric clarity through precise drawing sets and digital model coordination.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="exp-title">XYLOTEK &bull; <span>Complex Timber Designer</span></div>
+                                <div class="exp-date">2022 — 2024</div>
+                            </div>
+                            <ul>
+                                <li>Integrated advanced parametric design with digital fabrication pipelines to deliver innovative timber structures.</li>
+                                <li>Optimised complex geometry to maximize material efficiency, reduce waste, and ensure constructability.</li>
+                                <li>Partnered with specialist timber engineers to develop advanced joinery systems and final delivery documentation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="exp-title">DEM &bull; <span>Computational Designer</span></div>
+                                <div class="exp-date">2020 — 2022</div>
+                            </div>
+                            <ul>
+                                <li>Designed, engineered, and prototyped complex metal components utilizing 3D printing and metal casting technologies.</li>
+                                <li>Successfully translated fluid design ideas from abstract concepts into functional physical prototypes.</li>
+                            </ul>
+                        </div>
+
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <div class="exp-title">Fernando Romero Enterprise (FR-EE) &bull; <span>Parametric Designer</span></div>
+                                <div class="exp-date">2019</div>
+                            </div>
+                            <ul>
+                                <li>Developed parametric workflows and geometric rationalization for complex architectural forms and high-performance envelopes.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Recognition & Awards</h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem;"><strong>Shortlisted Finalist</strong> – Merrell 'Beacon' installation, Foula competition (Architects' Journal)</p>
+                    <p style="font-size: 0.95rem;"><strong>Winner</strong> – Best Professional Industrial Product Design 2021 – DEM (Eduardo Luce & Mariana Estrada)</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="terminal-title">eduardo_luce_bot_console.py</div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-line">Welcome to Eduardo's console. Type a command to explore his computational profile.</div>
+                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">clear</span></div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt" style="padding-left: 1.5rem;">$</span>
+                <input type="text" class="terminal-input" id="terminalInput" autofocus placeholder="Type command here...">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalBody = document.getElementById('terminalBody');
+
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim().toLowerCase();
+                this.value = '';
+                
+                // Print command
+                const cmdLine = document.createElement('div');
+                cmdLine.className = 'terminal-line';
+                cmdLine.innerHTML = `<span class="prompt">$</span> ${command}`;
+                terminalBody.appendChild(cmdLine);
+
+                // Handle logic
+                const outputLine = document.createElement('div');
+                outputLine.className = 'terminal-line terminal-output';
+
+                switch(command) {
+                    case 'help':
+                        outputLine.innerHTML = "Available commands:<br>- 'projects': Shows core structural initiatives.<br>- 'algorithms': Lists design script approaches utilized.<br>- 'clear': Clears the terminal screen.";
+                        break;
+                    case 'projects':
+                        outputLine.innerHTML = "Executing core query...<br>1. Project Rise [Ultra High-Rise Design Formulation]<br>2. Iconic Terminal, KSIA Riyadh Airport [Aviation Master Plan Automation]<br>3. Complex Timber Optimization Pipeline [XYLOTEK Joinery Workflow]";
+                        break;
+                    case 'algorithms':
+                        outputLine.innerHTML = "Loading library...<br>- Multi-objective genetic optimization (via Grasshopper/Galapagos/Wallacei)<br>- Point-cloud mesh rationalization patterns via custom C# elements<br>- Robotic kinematic tracking protocols via ROS wrappers";
+                        break;
+                    case 'clear':
+                        terminalBody.innerHTML = '';
+                        return;
+                    default:
+                        outputLine.innerHTML = `Command '${command}' not recognized. Type 'help' for options.`;
+                }
+                
+                terminalBody.appendChild(outputLine);
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
