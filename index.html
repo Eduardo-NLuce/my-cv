@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eduardo Luce | Computational Architectural Designer</title>
@@ -41,7 +39,7 @@
         header {
             border-bottom: 2px solid var(--text-color);
             padding-bottom: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .header-grid {
@@ -84,6 +82,85 @@
 
         .contact-info a:hover {
             border-bottom: 1px solid var(--text-color);
+        }
+
+        /* --- COMPLETELY INTERACTIVE TERMINAL WINDOW (Moved Up) --- */
+        .terminal-container {
+            margin-bottom: 4rem;
+            background-color: #151c23;
+            border-radius: 6px;
+            font-family: var(--mono-font);
+            color: #a9b7c6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #1e2a35;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #2b3945;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 6px;
+            margin-right: 1.5rem;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .terminal-title {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            height: 250px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+        }
+
+        .terminal-output {
+            color: #58afec;
+        }
+
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .prompt {
+            color: #27c93f;
+            font-weight: bold;
+        }
+
+        .terminal-input {
+            background: none;
+            border: none;
+            color: #fff;
+            font-family: var(--mono-font);
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
         }
 
         /* --- LAYOUT GRID --- */
@@ -225,7 +302,7 @@
             color: #000;
         }
 
-        /* --- NEW PORTFOLIO VISUALIZER SECTION --- */
+        /* --- PORTFOLIO VISUALIZER SECTION --- */
         .portfolio-section {
             margin-top: 4rem;
             border-top: 2px solid var(--text-color);
@@ -275,85 +352,6 @@
             color: var(--bg-color);
         }
 
-        /* --- INTERACTIVE TERMINAL WINDOW --- */
-        .terminal-container {
-            margin-top: 4rem;
-            background-color: #151c23;
-            border-radius: 6px;
-            font-family: var(--mono-font);
-            color: #a9b7c6;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            overflow: hidden;
-        }
-
-        .terminal-header {
-            background-color: #1e2a35;
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #2b3945;
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 6px;
-            margin-right: 1.5rem;
-        }
-
-        .dot {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-        }
-        .dot.red { background-color: #ff5f56; }
-        .dot.yellow { background-color: #ffbd2e; }
-        .dot.green { background-color: #27c93f; }
-
-        .terminal-title {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .terminal-body {
-            padding: 1.5rem;
-            height: 250px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-        }
-
-        .terminal-line {
-            margin-bottom: 0.5rem;
-            white-space: pre-wrap;
-        }
-
-        .terminal-output {
-            color: #58afec;
-        }
-
-        .terminal-input-line {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .prompt {
-            color: #27c93f;
-            font-weight: bold;
-        }
-
-        .terminal-input {
-            background: none;
-            border: none;
-            color: #fff;
-            font-family: var(--mono-font);
-            font-size: 0.9rem;
-            width: 100%;
-            outline: none;
-        }
-
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             body { padding: 2rem 1rem; }
@@ -383,6 +381,27 @@
             </div>
         </header>
 
+        <!-- --- TERMINAL WINDOW (NOW AT THE TOP) --- -->
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="terminal-title">eduardo_luce_bot_console.py</div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-line">Welcome to Eduardo's console. Type a command to explore his computational profile.</div>
+                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">portfolio</span>, <span class="terminal-output">clear</span></div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt" style="padding-left: 1.5rem;">$</span>
+                <input type="text" class="terminal-input" id="terminalInput" autofocus placeholder="Type command here...">
+            </div>
+        </div>
+
+        <!-- --- CV GRID LAYOUT --- -->
         <div class="cv-grid">
             
             <div class="sidebar">
@@ -415,7 +434,7 @@
                     <div class="edu-item">
                         <div class="edu-degree">Bachelor of Architecture</div>
                         <div class="edu-inst">UNAM</div>
-                        <div class="Mexico | 2015"></div>
+                        <div class="edu-date">Mexico | 2015</div>
                     </div>
                 </div>
 
@@ -501,6 +520,7 @@
             </div>
         </div>
 
+        <!-- --- PORTFOLIO SECTION --- -->
         <div class="portfolio-section">
             <h3>Selected Portfolio Works</h3>
             <p style="font-size: 0.95rem; color: #666; margin-bottom: 1rem;">A visual selection of computational design, parametric architecture, and structural optimization documents.</p>
@@ -517,25 +537,6 @@
                 <div class="portfolio-page">
                     <img src="img/page_03.jpg" alt="Eduardo Luce Portfolio - Page 3">
                 </div>
-                </div>
-        </div>
-
-        <div class="terminal-container">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <div class="dot red"></div>
-                    <div class="dot yellow"></div>
-                    <div class="dot green"></div>
-                </div>
-                <div class="terminal-title">eduardo_luce_bot_console.py</div>
-            </div>
-            <div class="terminal-body" id="terminalBody">
-                <div class="terminal-line">Welcome to Eduardo's console. Type a command to explore his computational profile.</div>
-                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">portfolio</span>, <span class="terminal-output">clear</span></div>
-            </div>
-            <div class="terminal-input-line">
-                <span class="prompt" style="padding-left: 1.5rem;">$</span>
-                <input type="text" class="terminal-input" id="terminalInput" autofocus placeholder="Type command here...">
             </div>
         </div>
 
@@ -571,7 +572,7 @@
                         outputLine.innerHTML = "Loading library...<br>- Multi-objective genetic optimization (via Grasshopper/Galapagos/Wallacei)<br>- Point-cloud mesh rationalization patterns via custom C# elements<br>- Robotic kinematic tracking protocols via ROS wrappers";
                         break;
                     case 'portfolio':
-                        outputLine.innerHTML = "Portfolio system status: ONLINE.<br>Scroll up to view 'Selected Portfolio Works' directly inside the viewport layout framework. High-res JPG render stream active.";
+                        outputLine.innerHTML = "Portfolio system status: ONLINE.<br>Scroll down to view 'Selected Portfolio Works' directly inside the viewport layout framework. High-res JPG render stream active.";
                         break;
                     case 'clear':
                         terminalBody.innerHTML = '';
