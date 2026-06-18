@@ -6,7 +6,7 @@
     <title>Eduardo Luce | Computational Architectural Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght=400;700&family=Plus+Jakarta+Sans:wght=300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -213,7 +213,6 @@
             color: #333;
         }
 
-        /* Minimal architectural bullet point (horizontal dash) */
         .exp-item li::before {
             content: "—";
             position: absolute;
@@ -226,7 +225,57 @@
             color: #000;
         }
 
-        /* --- COMPLETELY INTERACTIVE TERMINAL WINDOW (Computational Feature) --- */
+        /* --- NEW PORTFOLIO VISUALIZER SECTION --- */
+        .portfolio-section {
+            margin-top: 4rem;
+            border-top: 2px solid var(--text-color);
+            padding-top: 2rem;
+        }
+
+        .portfolio-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .portfolio-page {
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-page:hover {
+            transform: translateY(-2px);
+        }
+
+        .portfolio-page img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .portfolio-download-btn {
+            display: inline-block;
+            font-family: var(--mono-font);
+            font-size: 0.85rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--text-color);
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .portfolio-download-btn:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* --- INTERACTIVE TERMINAL WINDOW --- */
         .terminal-container {
             margin-top: 4rem;
             background-color: #151c23;
@@ -366,7 +415,7 @@
                     <div class="edu-item">
                         <div class="edu-degree">Bachelor of Architecture</div>
                         <div class="edu-inst">UNAM</div>
-                        <div class="edu-date">Mexico | 2015</div>
+                        <div class="Mexico | 2015"></div>
                     </div>
                 </div>
 
@@ -452,6 +501,25 @@
             </div>
         </div>
 
+        <div class="portfolio-section">
+            <h3>Selected Portfolio Works</h3>
+            <p style="font-size: 0.95rem; color: #666; margin-bottom: 1rem;">A visual selection of computational design, parametric architecture, and structural optimization documents.</p>
+            
+            <a href="eduardo-luce-portfolio.pdf" class="portfolio-download-btn" target="_blank" download>↓ Download Full Portfolio PDF</a>
+
+            <div class="portfolio-container">
+                <div class="portfolio-page">
+                    <img src="img/page_01.jpg" alt="Eduardo Luce Portfolio - Page 1">
+                </div>
+                <div class="portfolio-page">
+                    <img src="img/page_02.jpg" alt="Eduardo Luce Portfolio - Page 2">
+                </div>
+                <div class="portfolio-page">
+                    <img src="img/page_03.jpg" alt="Eduardo Luce Portfolio - Page 3">
+                </div>
+                </div>
+        </div>
+
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-buttons">
@@ -463,7 +531,7 @@
             </div>
             <div class="terminal-body" id="terminalBody">
                 <div class="terminal-line">Welcome to Eduardo's console. Type a command to explore his computational profile.</div>
-                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">clear</span></div>
+                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">portfolio</span>, <span class="terminal-output">clear</span></div>
             </div>
             <div class="terminal-input-line">
                 <span class="prompt" style="padding-left: 1.5rem;">$</span>
@@ -494,13 +562,16 @@
 
                 switch(command) {
                     case 'help':
-                        outputLine.innerHTML = "Available commands:<br>- 'projects': Shows core structural initiatives.<br>- 'algorithms': Lists design script approaches utilized.<br>- 'clear': Clears the terminal screen.";
+                        outputLine.innerHTML = "Available commands:<br>- 'projects': Shows core structural initiatives.<br>- 'algorithms': Lists design script approaches utilized.<br>- 'portfolio': Status of the embedded graphics portfolio.<br>- 'clear': Clears the terminal screen.";
                         break;
                     case 'projects':
                         outputLine.innerHTML = "Executing core query...<br>1. Project Rise [Ultra High-Rise Design Formulation]<br>2. Iconic Terminal, KSIA Riyadh Airport [Aviation Master Plan Automation]<br>3. Complex Timber Optimization Pipeline [XYLOTEK Joinery Workflow]";
                         break;
                     case 'algorithms':
                         outputLine.innerHTML = "Loading library...<br>- Multi-objective genetic optimization (via Grasshopper/Galapagos/Wallacei)<br>- Point-cloud mesh rationalization patterns via custom C# elements<br>- Robotic kinematic tracking protocols via ROS wrappers";
+                        break;
+                    case 'portfolio':
+                        outputLine.innerHTML = "Portfolio system status: ONLINE.<br>Scroll up to view 'Selected Portfolio Works' directly inside the viewport layout framework. High-res JPG render stream active.";
                         break;
                     case 'clear':
                         terminalBody.innerHTML = '';
