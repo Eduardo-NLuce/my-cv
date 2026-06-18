@@ -84,7 +84,7 @@
             border-bottom: 1px solid var(--text-color);
         }
 
-        /* --- COMPLETELY INTERACTIVE TERMINAL WINDOW (Moved Up) --- */
+        /* --- COMPLETELY INTERACTIVE TERMINAL WINDOW --- */
         .terminal-container {
             margin-bottom: 4rem;
             background-color: #151c23;
@@ -335,23 +335,6 @@
             display: block;
         }
 
-        .portfolio-download-btn {
-            display: inline-block;
-            font-family: var(--mono-font);
-            font-size: 0.85rem;
-            color: var(--text-color);
-            text-decoration: none;
-            border: 1px solid var(--text-color);
-            padding: 0.5rem 1rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.2s ease;
-        }
-
-        .portfolio-download-btn:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-        }
-
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             body { padding: 2rem 1rem; }
@@ -375,13 +358,12 @@
                 </div>
                 <div class="contact-info">
                     <p>London, UK</p>
-                    <p>07763667830</p>
                     <p><a href="mailto:arq.enluce@gmail.com">arq.enluce@gmail.com</a></p>
                 </div>
             </div>
         </header>
 
-        <!-- --- TERMINAL WINDOW (NOW AT THE TOP) --- -->
+        <!-- --- TERMINAL WINDOW --- -->
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="terminal-buttons">
@@ -525,8 +507,6 @@
             <h3>Selected Portfolio Works</h3>
             <p style="font-size: 0.95rem; color: #666; margin-bottom: 1rem;">A visual selection of computational design, parametric architecture, and structural optimization documents.</p>
             
-            <a href="eduardo-luce-portfolio.pdf" class="portfolio-download-btn" target="_blank" download>↓ Download Full Portfolio PDF</a>
-
             <div class="portfolio-container">
                 <div class="portfolio-page">
                     <img src="img/page_01.jpg" alt="Eduardo Luce Portfolio - Page 1">
@@ -559,6 +539,7 @@
                     <img src="img/page_16.jpg" alt="Eduardo Luce Portfolio - Page 10">
                 </div>
                 
+                <!-- Recuerda añadir más bloques aquí abajo si tu portafolio tiene más páginas -->
             </div>
         </div>
 
