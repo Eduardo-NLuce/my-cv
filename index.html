@@ -375,7 +375,7 @@
             </div>
             <div class="terminal-body" id="terminalBody">
                 <div class="terminal-line">Welcome to Eduardo's console. Type a command to explore his computational profile.</div>
-                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">portfolio</span>, <span class="terminal-output">clear</span></div>
+                <div class="terminal-line">Available commands: <span class="terminal-output">help</span>, <span class="terminal-output">projects</span>, <span class="terminal-output">algorithms</span>, <span class="terminal-output">portfolio</span>, <span class="terminal-output">magnetic-2d</span>, <span class="terminal-output">clear</span></div>
             </div>
             <div class="terminal-input-line">
                 <span class="prompt" style="padding-left: 1.5rem;">$</span>
@@ -584,19 +584,19 @@
                 const command = this.value.trim().toLowerCase();
                 this.value = '';
                 
-                // Print command
+                // Imprimir el comando en la pantalla de la terminal
                 const cmdLine = document.createElement('div');
                 cmdLine.className = 'terminal-line';
                 cmdLine.innerHTML = `<span class="prompt">$</span> ${command}`;
                 terminalBody.appendChild(cmdLine);
 
-                // Handle logic
+                // Lógica de respuesta para cada comando
                 const outputLine = document.createElement('div');
                 outputLine.className = 'terminal-line terminal-output';
 
                 switch(command) {
                     case 'help':
-                        outputLine.innerHTML = "Available commands:<br>- 'projects': Shows core structural initiatives.<br>- 'algorithms': Lists design script approaches utilized.<br>- 'portfolio': Status of the embedded graphics portfolio.<br>- 'clear': Clears the terminal screen.";
+                        outputLine.innerHTML = "Available commands:<br>- 'projects': Shows core structural initiatives.<br>- 'algorithms': Lists design script approaches utilized.<br>- 'portfolio': Status of the embedded graphics portfolio.<br>- 'magnetic-2d': Opens the interactive 2D magnetic web simulation engine.<br>- 'clear': Clears the terminal screen.";
                         break;
                     case 'projects':
                         outputLine.innerHTML = "Executing core query...<br>1. Project Rise [Ultra High-Rise Design Formulation]<br>2. Iconic Terminal, KSIA Riyadh Airport [Aviation Master Plan Automation]<br>3. Complex Timber Optimization Pipeline [XYLOTEK Joinery Workflow]";
@@ -605,7 +605,12 @@
                         outputLine.innerHTML = "Loading library...<br>- Multi-objective genetic optimization (via Grasshopper/Galapagos/Wallacei)<br>- Point-cloud mesh rationalization patterns via custom C# elements<br>- Robotic kinematic tracking protocols via ROS wrappers";
                         break;
                     case 'portfolio':
-                        outputLine.innerHTML = "Portfolio system status: ONLINE.<br>Scroll down to view 'Selected Portfolio Works' directly inside the viewport layout framework. High-res JPG render stream active.";
+                        outputLine.innerHTML = "Portfolio system status: ONLINE.<br>Scroll down to view 'Selected Portfolio Works' directly inside the framework grid layout.";
+                        break;
+                    case 'magnetic-2d':
+                        outputLine.innerHTML = "Initializing simulation bridge... Launching external application in a new viewport tab.<br>Link: https://eduardo-nluce.github.io/magnetic-2d/";
+                        // Abre tu enlace en una pestaña nueva
+                        window.open('https://eduardo-nluce.github.io/magnetic-2d/', '_blank');
                         break;
                     case 'clear':
                         terminalBody.innerHTML = '';
